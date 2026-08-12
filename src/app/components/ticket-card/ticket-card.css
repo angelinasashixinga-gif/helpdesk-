@@ -1,0 +1,24 @@
+.cartao {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background: white;
+}
+.cartao header {
+    margin-bottom: 15px;
+}
+.id {
+    font-weight: bold;
+}
+.cartao h3 {
+    margin: 5px 0;
+}
+.cartao p {
+    margin-bottom: 20px;
+}
+.cartao footer {
+    display: flex;
+    gap: 100px;
+}
