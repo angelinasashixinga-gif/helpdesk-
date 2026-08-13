@@ -51,7 +51,7 @@ export const TICKETS_MOCK: Ticket[] = [
     {
         id: 2,
         titulo: 'Computdor não liga',
-        descricao: 'O compuatador do departamento financeiro não inicia.',
+        descricao: 'O computador do departamento financeiro não inicia.',
         prioridade: 'alta',
         estado: 'em-progresso',
         tecnico: 'João Manuel', 

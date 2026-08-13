@@ -1,0 +1,24 @@
+<h2>Lista de Tickets</h2>
+
+<p>Total de Tickets: {{ tickets().length }}</p>
+
+<button (click)="adicionarTicket()">
+    Adicionar ticket de teste
+</button>
+
+<button (click)="limparLista()">
+    Limpar Lista
+</button>
+
+<hr>
+
+@for (ticket of tickets(); track ticket.id) {
+    <article>
+        <h3>#{{ ticket.id }} - {{ ticket.titulo }}</h3>
+
+        <p>{{ ticket.descricao }}</p>
+        <p>Prioridades: {{ ticket. prioridade }}</p>
+        <p>Categoria: {{ ticket.categoria }}</p>
+        <p>Técnico: {{ticket.tecnico }}</p>
+    </article>
+}
