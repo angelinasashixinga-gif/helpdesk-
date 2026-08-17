@@ -17,15 +17,79 @@
   }
   
 
-  <p>
+  @if (ticket().tecnico; as nomeTecnico) {
+  <p class="tecnico">
+    <strong>Técnico:</strong>
+    {{ nomeTecnico}}
+  </p>
+} @else {
+
+  <p class="sem-tecnico">
+    <strong>Técnico:</strong>
+    <em>Por atribuir</em>
+  </p>
+
+}
+ <p>
     <strong>Categoria:</strong> 
     {{ ticket().categoria }}
   </p>
 
-  <p>
-    <strong>Técnico:</strong>
-    {{ ticket().tecnico ?? 'Não atribuído' }}
-  </p>
+  @if (ticket().prioridade === 'critica') {
+    <p class="sla urgente">
+      Resposta em 1 hora
+    </p>
+
+  } @else if (ticket().prioridade === 'alta') {
+
+    <p class="sla">
+      Resposta em 4 horas
+    </p>
+     } @else if (ticket().prioridade === 'media') {
+
+    <p class="sla">
+      Resposta em 24 horas
+    </p>
+     } @else {
+
+    <p class="sla">
+      Resposta em 72 horas
+    </p>
+
+  }
+  <div class="estado">
+
+  <strong>Estado:</strong>
+
+  @switch (ticket().estado) {
+
+    @case ('aberto') {
+      <span class="etiqueta">
+        🔵 Aberto
+      </span>
+    }
+
+    @case ('em-progresso') {
+      <span class="etiqueta">
+        🟡 Em progresso
+      </span>
+    }
+
+    @case ('resolvido') {
+      <span class="etiqueta">
+        ✅ Resolvido
+      </span>
+    }
+
+    @default {
+      <span class="etiqueta">
+        ⚫ Fechado
+      </span>
+    }
+
+  }
+
+</div>
 
   <button (click)="proximoEstado()">
     Avançar Estado

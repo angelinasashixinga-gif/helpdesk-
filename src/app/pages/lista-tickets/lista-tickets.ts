@@ -10,7 +10,7 @@ import { TicketCard } from '../../components/ticket-card/ticket-card';
 })
 export class ListaTickets {
 
-  tickets = signal<Ticket[]>([]);
+  tickets = signal<Ticket[]>(TICKETS_MOCK);
 
   totalTickets = computed(() => this.tickets().length);
 
@@ -32,7 +32,7 @@ export class ListaTickets {
       novoTicket
     ]);
 
-    console.log(this.tickets())
+    console.log(this.tickets)
     // Atualiza o total
   }
 
