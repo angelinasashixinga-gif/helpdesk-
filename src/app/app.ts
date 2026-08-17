@@ -14,12 +14,11 @@ a aplicação.
 
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TicketCard } from './components/ticket-card/ticket-card';
 import { ListaTickets } from './pages/lista-tickets/lista-tickets';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TicketCard, ListaTickets],
+  imports: [RouterOutlet, ListaTickets],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { Ticket, EstadoTicket } from '../../models/ticket.model';
 
 @Component({
   selector: 'app-ticket-card',
@@ -7,11 +8,41 @@ import { Component } from '@angular/core';
   styleUrl: './ticket-card.css',
 })
 export class TicketCard {
-  ticket = {
-    id: 1,
-    titulo: 'Impressora do 2.º piso não imprime',
-    descricao: 'A impressora HP LaserJet apresenta erro ao imprimir.',
-    categoria: 'harware',
-    tecnico: 'João Manuel'
-  };
+
+  ticket = input.required<Ticket>();
+
+  mostrarDetalhes = input(false);
+
+  estadoAlterado = output<EstadoTicket>();
+
+  ticketRemovido = output<number>();
+
+
+  proximoEstado(): void {
+
+    const fluxo: EstadoTicket[] = [
+      'aberto',
+      'em-progresso',
+      'resolvido',
+      'fechado'
+    ];
+
+    const atual = fluxo.indexOf(this.ticket().estado);
+
+    const seguinte =
+      fluxo[Math.min(atual + 1, fluxo.length - 1)];
+
+    console.log('Novo estado:', seguinte);
+
+    this.estadoAlterado.emit(seguinte);
+  }
+
+
+  remover(): void {
+
+    console.log('ELIMINAR CLICADO');
+
+    this.ticketRemovido.emit(this.ticket().id);
+  }
+
 }

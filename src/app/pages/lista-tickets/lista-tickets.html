@@ -1,45 +1,40 @@
 <h2>Lista de Tickets</h2>
 
-<p>Total de Tickets: {{ tickets().length }}</p>
+<p>Total de Tickets: {{ totalTickets() }}</p>
 
-<button (click)="adicionarTicket()">
-    Adicionar ticket de teste
+<button type="button" (click)="adicionarTicket()">
+  Adicionar Ticket
 </button>
 
-<button (click)="limparLista()">
-    Limpar Lista
+<button type="button" (click)="limparLista()">
+  Limpar Listao 
 </button>
 
 <hr>
 
-@for (ticket of tickets(); track ticket.id;
-let i = $index; let par = $even; let impar = $odd) {
-
-    <article
-    class="ticket"
+@for (ticket of tickets(); track ticket.id; 
+  let i = $index;
+  let par = $even;
+  let impar = $odd
+) {
+ <div
+    class="linha-ticket"
     [class.par]="par"
     [class.impar]="impar"
-    >
+  >
 
-        <h3>#{{ i + 1 }} - {{ ticket.titulo }}</h3>
-
-        <p>{{ ticket.descricao }}</p>
-        <p>
-            <strong>Prioridades:</strong> 
-            {{ ticket. prioridade }}
-        </p>
-        <p>
-            <strong>Categoria: </strong>
-            {{ ticket.categoria }}
-        </p>
-        <p>
-            <strong>Técnico: </strong>
-            {{ticket.tecnico }}
-        </p>
-    </article>
+    <app-ticket-card
+      [ticket]="ticket"
+      [mostrarDetalhes]="true"
+      (estadoAlterado)="alterarEstado(ticket.id, $event)"
+      (ticketRemovido)="removerTicket($event)"
+    />
+ </div>
 }
 @empty {
-    <p>Não existem tickets registados.
 
-    </p>
+  <p class="sem-tickets">
+    Não existem tickets registados.
+  </p>
+
 }

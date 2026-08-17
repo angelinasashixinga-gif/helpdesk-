@@ -1,14 +1,39 @@
-.ticket {
-  padding: 15px;
-  margin-bottom: 5px;
-  display: block;
+h2 {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  margin-right: 10px;
   border: 2px solid #000;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: rgb(152, 170, 170);
+  
+}
+
+.linha-ticket {
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border: 2px solid #000;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.4);
+  background-color: #f2f2f2;
 }
+
+/* Tickets 1, 3, 5... */
 .par {
-    background-color: #f2f2f2;
+  background-color: #eeeeee;
 }
+
+/* Tickets 2, 4, 6... */
 .impar {
-    background-color: white;
+  background-color: #ffffff;
+}
+
+.sem-tickets {
+  padding: 20px;
+  background-color: #eeeeee;
+  border-radius: 8px;
+  text-align: center;
 }

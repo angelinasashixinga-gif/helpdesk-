@@ -79,7 +79,7 @@ export const TICKETS_MOCK: Ticket[] = [
         dataCriacao: new Date('2026-03-05t14:00:00')
     },
      {
-        id: 6,
+        id: 5,
         titulo: 'Falha no servidor',
         descricao: 'O servidor apresenta falhas durante o processamento.',
         prioridade: 'critica',
@@ -89,7 +89,7 @@ export const TICKETS_MOCK: Ticket[] = [
         dataCriacao: new Date('2026-03-07t16:10:00')
     },
  {
-    id: 7,
+    id: 6,
     titulo: 'Atualização de software',
     descricao: 'É necessária uma atualização do software utilizado pelo setor.',
     prioridade: 'media',
@@ -97,6 +97,16 @@ export const TICKETS_MOCK: Ticket[] = [
     tecnico: 'Maria José',
     categoria: 'software',
     dataCriacao: new Date('2026-03-08T09:00:00')
+  },
+  {
+    id: 7,
+    titulo: 'Conta bloqueada',
+    descricao: 'A conta do utilizador foi bloqueada após várias tentativas.',
+    prioridade: 'alta',
+    estado: 'fechado',
+    tecnico: 'Pedro António',
+    categoria: 'acesso',
+    dataCriacao: new Date('2026-03-09T13:25:00')
   },
   {
     id: 8,

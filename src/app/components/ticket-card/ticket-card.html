@@ -1,16 +1,37 @@
-<article class="cartao"[title]="ticket.descricao">
+<article
+  class="ticket-card"
+>
 
-    <header>
-        <span class="id">#{{ ticket.id }}</span>
+  <span>
+    #{{ ticket().id }}
+  </span>
 
-        <h3>{{ ticket.titulo }}</h3>
-    </header>
+  <h3>
+    {{ ticket().titulo }}
+  </h3>
 
-    <p>{{ ticket.descricao }}</p>
+  @if (mostrarDetalhes()) {
+  <p>
+    {{ ticket().descricao }}
+  </p>
+  }
+  
 
-    <footer>
-        <small>Categoria: {{ ticket.categoria }}</small>
-        <small>Técnico: {{ ticket.tecnico }}</small>
-    </footer>
+  <p>
+    <strong>Categoria:</strong> 
+    {{ ticket().categoria }}
+  </p>
 
-    </article>
+  <p>
+    <strong>Técnico:</strong>
+    {{ ticket().tecnico ?? 'Não atribuído' }}
+  </p>
+
+  <button (click)="proximoEstado()">
+    Avançar Estado
+  </button>
+
+  <button (click)="remover()">eliminar
+  </button>
+
+</article>
