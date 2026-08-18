@@ -9,8 +9,13 @@ button {
   border-radius: 6px;
   cursor: pointer;
   background-color: rgb(152, 170, 170);
+
   
 }
+button:active {
+  transform: scale(0.95);
+}
+
 
 .linha-ticket {
   padding: 15px;

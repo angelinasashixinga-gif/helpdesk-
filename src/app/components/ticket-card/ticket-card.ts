@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { Ticket, EstadoTicket } from '../../models/ticket.model';
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './ticket-card.html',
   styleUrl: './ticket-card.css',
 })

@@ -1,4 +1,4 @@
-.cartao {
+.ticket-card {
     border: 3px solid #ddd;
     border-radius: 10px;
     padding: 10px;
@@ -6,16 +6,16 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     background: white;
 }
-.cartao header {
+.ticket-card {
     margin-bottom: 15px;
 }
 .id {
     font-weight: bold;
 }
-.cartao h3 {
+.ticket-card {
     margin: 5px 0;
 }
-.cartao p {
+.ticket-card {
     margin-bottom: 20px;
 }
 .cartao footer {
@@ -28,11 +28,45 @@
 }
 
 .btn-avancar {
-  background-color: #333;
-  color: white;
+  background-color: #b18181;
+  opacity: 0.8;
+  cursor: pointer;
+   border: 2px solid #000;
+   border-radius: 3px;
+   width: 150px;
+   
+
 }
 
 .btn-eliminar {
-  background-color: #b00020;
-  color: white;
+  background-color: #b18181;
+  opacity: 0.8;
+  cursor: pointer;
+  justify-content: left;
+  margin: 10px;
+  border: 2px solid #000;
+  border-radius: 3px;
+  width: 150px;
+}
+
+.btn-avancar:active,
+.btn-eliminar:active {
+  transform: scale(0.95);
+   width: 150px;
+}
+.button {
+  display: flex;
+  gap: 150px;
+}
+.prio-baixo {
+  border-left: 5px solid green;
+}
+.prio-media {
+  border-left: 5px solid blue;
+}
+.prio-alta {
+  border-left: 5px solid orange;
+}
+.prio-critica {
+  border-left: 5px solid red;
 }

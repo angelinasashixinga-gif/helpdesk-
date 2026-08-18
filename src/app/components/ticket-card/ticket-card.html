@@ -1,5 +1,6 @@
 <article
   class="ticket-card"
+  [ngClass]="'prio-' + ticket().prioridade"
 >
 
   <span>
@@ -91,11 +92,22 @@
 
 </div>
 
-  <button (click)="proximoEstado()">
-    Avançar Estado
-  </button>
+<div class="button">
+<button
+  class="btn-avancar"
+  type="button"
+  (click)="proximoEstado()"
+>
+  Avançar Estado
+</button>
 
-  <button (click)="remover()">eliminar
-  </button>
+<button
+  class="btn-eliminar"
+  type="button"
+  (click)="remover()"
+>
+  Eliminar
+</button>
+</div>
 
 </article>
