@@ -1,6 +1,12 @@
 <article
   class="ticket-card"
   [ngClass]="'prio-' + ticket().prioridade"
+  [ngStyle]="{ 'background-color':
+    ticket().prioridade === 'critica' ? '#ffe5e5' :
+    ticket().prioridade === 'alta' ? '#fff0d6' :
+    ticket().prioridade === 'media' ? '#e6f0ff' :
+    '#e8f5e9'
+  }"
 >
 
   <span>
@@ -25,7 +31,8 @@
   </p>
 } @else {
 
-  <p class="sem-tecnico">
+  <p class="sem-tecnico"
+  [class.sem-responsavel]="!ticket().tecnico">
     <strong>Técnico:</strong>
     <em>Por atribuir</em>
   </p>
@@ -58,7 +65,11 @@
     </p>
 
   }
-  <div class="estado">
+  <div class="estado"
+   [ngClass]="{
+    'urgente': ticket().prioridade === 'critica' || ticket().estado === 'aberto',
+    'concluido': ticket().estado === 'resolvido' || ticket().estado === 'fechado'
+  }">
 
   <strong>Estado:</strong>
 
