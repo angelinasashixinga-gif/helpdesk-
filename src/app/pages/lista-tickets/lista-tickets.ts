@@ -14,6 +14,41 @@ export class ListaTickets {
 
   totalTickets = computed(() => this.tickets().length);
 
+  termoPesquisa = signal('');
+
+  filtroEstado = signal('todos');
+
+  
+
+  filtrar(estado: string): void {
+    this.filtroEstado.set(estado);
+  }
+  
+
+  pesquisar(event: Event): void {
+  const valor = (event.target as HTMLInputElement).value;
+
+  this.termoPesquisa.set(valor);
+}
+get ticketsFiltrados(): Ticket[] {
+
+  const termo = this.termoPesquisa().toLowerCase();
+  const estado = this.filtroEstado();
+
+  return this.tickets().filter(ticket => {
+
+    const correspondePesquisa =
+      ticket.titulo.toLowerCase().includes(termo) ||
+      ticket.descricao.toLowerCase().includes(termo);
+
+    const correspondeEstado =
+      estado === 'todos' ||
+      ticket.estado === estado;
+
+    return correspondePesquisa && correspondeEstado;
+  });
+}
+
   adicionarTicket() {
 
     const novoTicket: Ticket = {

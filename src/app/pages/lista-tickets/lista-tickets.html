@@ -1,5 +1,35 @@
 <h2>Lista de Tickets</h2>
 
+<input type="text"
+placeholder="Pesquisar Ticket..."
+(input)="pesquisar($event)"
+>
+<hr>
+<div class="filtros">
+
+  <button type="button" (click)="filtrar('todos')">
+    Todos
+  </button>
+
+  <button type="button" (click)="filtrar('aberto')">
+    Abertos
+  </button>
+
+  <button type="button" (click)="filtrar('em-processo')">
+    Em processo
+  </button>
+
+  <button type="button" (click)="filtrar('resolvido')">
+    Resolvidos
+  </button>
+
+  <button type="button" (click)="filtrar('fechado')">
+    Fechados
+  </button>
+  <hr>
+
+</div>
+
 <p>Total de Tickets: {{ totalTickets() }}</p>
 
 <button type="button" (click)="adicionarTicket()">
@@ -12,7 +42,8 @@
 
 <hr>
 
-@for (ticket of tickets(); track ticket.id; 
+@for (ticket of ticketsFiltrados;
+ track ticket.id; 
   let i = $index;
   let par = $even;
   let impar = $odd
