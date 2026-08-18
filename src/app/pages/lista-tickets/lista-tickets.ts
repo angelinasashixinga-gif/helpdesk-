@@ -18,7 +18,14 @@ export class ListaTickets {
 
   filtroEstado = signal('todos');
 
-  
+  filtroPrioridade = signal('todas')
+
+  filtrarPrioridade(event: Event): void {
+    const valor =
+    (event.target as HTMLSelectElement).value;
+
+    this.filtroPrioridade.set(valor);
+  }
 
   filtrar(estado: string): void {
     this.filtroEstado.set(estado);
@@ -32,8 +39,14 @@ export class ListaTickets {
 }
 get ticketsFiltrados(): Ticket[] {
 
-  const termo = this.termoPesquisa().toLowerCase();
-  const estado = this.filtroEstado();
+  const termo =
+    this.termoPesquisa().toLowerCase();
+
+  const estado =
+    this.filtroEstado();
+
+  const prioridade =
+    this.filtroPrioridade();
 
   return this.tickets().filter(ticket => {
 
@@ -45,8 +58,15 @@ get ticketsFiltrados(): Ticket[] {
       estado === 'todos' ||
       ticket.estado === estado;
 
-    return correspondePesquisa && correspondeEstado;
+    const correspondePrioridade =
+      prioridade === 'todas' ||
+      ticket.prioridade === prioridade;
+
+    return correspondePesquisa &&
+           correspondeEstado &&
+           correspondePrioridade;
   });
+
 }
 
   adicionarTicket() {

@@ -29,6 +29,15 @@ placeholder="Pesquisar Ticket..."
   <hr>
 
 </div>
+<select
+  (change)="filtrarPrioridade($event)"
+>
+  <option value="todas">Todas</option>
+  <option value="baixa">Baixa</option>
+  <option value="media">Média</option>
+  <option value="alta">Alta</option>
+  <option value="critica">Crítica</option>
+</select>
 
 <p>Total de Tickets: {{ totalTickets() }}</p>
 
