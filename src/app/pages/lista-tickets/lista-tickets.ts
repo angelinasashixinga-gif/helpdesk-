@@ -30,6 +30,15 @@ export class ListaTickets {
   filtrar(estado: string): void {
     this.filtroEstado.set(estado);
   }
+  contarPorEstado(estado: EstadoTicket): number {
+  return this.tickets().filter(ticket =>
+     ticket.estado === estado).length;
+}
+limparFiltros(): void {
+  this.termoPesquisa.set('');
+  this.filtroEstado.set('todos');
+  this.filtroPrioridade.set('todas');
+}
   
 
   pesquisar(event: Event): void {

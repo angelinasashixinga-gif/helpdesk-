@@ -7,25 +7,45 @@ placeholder="Pesquisar Ticket..."
 <hr>
 <div class="filtros">
 
-  <button type="button" (click)="filtrar('todos')">
-    Todos
-  </button>
+  <button
+  type="button"
+  [class.ativo]="filtroEstado() === 'todos'"
+  (click)="filtrar('todos')"
+>
+  Todos ({{ totalTickets() }})
+</button>
 
-  <button type="button" (click)="filtrar('aberto')">
-    Abertos
-  </button>
+<button
+  type="button"
+  [class.ativo]="filtroEstado() === 'aberto'"
+  (click)="filtrar('aberto')"
+>
+  Abertos ({{ contarPorEstado('aberto') }})
+</button>
 
-  <button type="button" (click)="filtrar('em-processo')">
-    Em processo
-  </button>
+<button
+  type="button"
+  [class.ativo]="filtroEstado() === 'em-progresso'"
+  (click)="filtrar('em-progresso')"
+>
+  Em processo ({{ contarPorEstado('em-progresso') }})
+</button>
 
-  <button type="button" (click)="filtrar('resolvido')">
-    Resolvidos
-  </button>
+<button
+  type="button"
+  [class.ativo]="filtroEstado() === 'resolvido'"
+  (click)="filtrar('resolvido')"
+>
+  Resolvidos ({{ contarPorEstado('resolvido') }})
+</button>
 
-  <button type="button" (click)="filtrar('fechado')">
-    Fechados
-  </button>
+<button
+  type="button"
+  [class.ativo]="filtroEstado() === 'fechado'"
+  (click)="filtrar('fechado')"
+>
+  Fechados ({{ contarPorEstado('fechado') }})
+</button>
   <hr>
 
 </div>
@@ -38,6 +58,12 @@ placeholder="Pesquisar Ticket..."
   <option value="alta">Alta</option>
   <option value="critica">Crítica</option>
 </select>
+  <button
+  type="button"
+  (click)="limparFiltros()">
+  Limpar filtros
+</button>
+ <hr>
 
 <p>Total de Tickets: {{ totalTickets() }}</p>
 
