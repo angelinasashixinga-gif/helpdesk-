@@ -18,7 +18,6 @@ export class TicketCard {
 
   ticketRemovido = output<number>();
 
-
   proximoEstado(): void {
 
     const fluxo: EstadoTicket[] = [

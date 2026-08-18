@@ -67,13 +67,14 @@
   }
   <div class="estado"
    [ngClass]="{
-    'urgente': ticket().prioridade === 'critica' || ticket().estado === 'aberto',
+    'urgente': ticket().prioridade === 'critica' && ticket().estado === 'aberto',
     'concluido': ticket().estado === 'resolvido' || ticket().estado === 'fechado'
   }">
 
   <strong>Estado:</strong>
 
   @switch (ticket().estado) {
+    
 
     @case ('aberto') {
       <span class="etiqueta">
@@ -100,6 +101,16 @@
     }
 
   }
+  <div class="barra">
+        <div
+        class="progresso"
+         [style.width.%]="
+      ticket().estado === 'aberto' ? 25 :
+      ticket().estado === 'em-progresso' ? 50 :
+      ticket().estado === 'resolvido' ? 75 :
+      100">
+      </div>
+      </div>
 
 </div>
 
