@@ -1,4 +1,4 @@
-import { Component, signal, computed} from '@angular/core';
+import { Component, signal, computed, effect} from '@angular/core';
 import {Ticket, TICKETS_MOCK, EstadoTicket} from '../../models/ticket.model';
 import { TicketCard } from '../../components/ticket-card/ticket-card';
 
@@ -19,6 +19,8 @@ export class ListaTickets {
   filtroEstado = signal('todos');
 
   filtroPrioridade = signal('todas');
+
+  
 
   filtrarPrioridade(event: Event): void {
     const valor =
@@ -83,6 +85,12 @@ totalCriticos = computed(() =>
     ticket => ticket.prioridade === 'critica'
   ).length
 );
+efeitoCriticos = effect(() => {
+  console.log(
+    'Número de tickets críticos:',
+    this.totalCriticos()
+  );
+});
 
 percentagemResolvidos = computed(() => {
 
