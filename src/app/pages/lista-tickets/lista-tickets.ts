@@ -18,7 +18,7 @@ export class ListaTickets {
 
   filtroEstado = signal('todos');
 
-  filtroPrioridade = signal('todas')
+  filtroPrioridade = signal('todas');
 
   filtrarPrioridade(event: Event): void {
     const valor =
@@ -46,16 +46,11 @@ limparFiltros(): void {
 
   this.termoPesquisa.set(valor);
 }
-get ticketsFiltrados(): Ticket[] {
+ticketsFiltrados = computed(() => {
 
-  const termo =
-    this.termoPesquisa().toLowerCase();
-
-  const estado =
-    this.filtroEstado();
-
-  const prioridade =
-    this.filtroPrioridade();
+  const termo = this.termoPesquisa().toLowerCase();
+  const estado = this.filtroEstado();
+  const prioridade = this.filtroPrioridade();
 
   return this.tickets().filter(ticket => {
 
@@ -76,7 +71,39 @@ get ticketsFiltrados(): Ticket[] {
            correspondePrioridade;
   });
 
-}
+});
+totalAbertos = computed(() =>
+  this.tickets().filter(
+    ticket => ticket.estado === 'aberto'
+  ).length
+);
+
+totalCriticos = computed(() =>
+  this.tickets().filter(
+    ticket => ticket.prioridade === 'critica'
+  ).length
+);
+
+percentagemResolvidos = computed(() => {
+
+  const total = this.tickets().length;
+
+  if (total === 0) {
+    return 0;
+  }
+
+  const resolvidos = this.tickets().filter(
+    ticket => ticket.estado === 'resolvido'
+  ).length;
+
+  return Math.round((resolvidos / total) * 100);
+});
+
+ticketsSemTecnico = computed(() =>
+  this.tickets().filter(
+    ticket => ticket.tecnico === null
+  ).length
+);
 
   adicionarTicket() {
 

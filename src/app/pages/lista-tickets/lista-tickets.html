@@ -77,7 +77,7 @@ placeholder="Pesquisar Ticket..."
 
 <hr>
 
-@for (ticket of ticketsFiltrados;
+@for (ticket of ticketsFiltrados();
  track ticket.id; 
   let i = $index;
   let par = $even;
