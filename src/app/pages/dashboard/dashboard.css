@@ -1,0 +1,32 @@
+.dashboard {
+  padding: 30px;
+}
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.grafico {
+  margin-top: 20px;
+}
+
+.linha-grafico {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.linha-grafico span {
+  width: 100px;
+}
+
+.barra {
+  min-width: 30px;
+  padding: 6px 10px;
+  background: #3498db;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}

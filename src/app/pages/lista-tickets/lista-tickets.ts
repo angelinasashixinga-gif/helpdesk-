@@ -1,11 +1,11 @@
 import { Component, signal, computed, effect} from '@angular/core';
 import {Ticket, TICKETS_MOCK, EstadoTicket} from '../../models/ticket.model';
 import { TicketCard } from '../../components/ticket-card/ticket-card';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lista-tickets',
-  imports: [TicketCard],
+  imports: [TicketCard, DatePipe],
   templateUrl: './lista-tickets.html',
   styleUrl: './lista-tickets.css',
 })

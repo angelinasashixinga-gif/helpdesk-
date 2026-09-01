@@ -1,1 +1,63 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+
+  <h1>Dashboard</h1>
+
+  <div class="cartoes">
+
+    <app-cartao-estatistica
+      titulo="Total de tickets"
+      [valor]="totalTickets()"
+      cor="#3498db"
+      icone="🎫"
+    />
+
+    <app-cartao-estatistica
+      titulo="Tickets abertos"
+      [valor]="totalAbertos()"
+      cor="#f39c12"
+      icone="📂"
+    />
+
+    <app-cartao-estatistica
+      titulo="Tickets críticos"
+      [valor]="totalCriticos()"
+      cor="#c0392b"
+      icone="⚠️"
+    />
+
+    <app-cartao-estatistica
+      titulo="Tickets resolvidos"
+      [valor]="percentagemResolvidos()"
+      cor="#27ae60"
+      icone="✅"
+    />
+
+  </div>
+  <h2>Tickets por estado</h2>
+
+<div class="grafico">
+
+  @for (item of ticketsPorEstado(); track item.estado) {
+
+    <div class="linha-grafico">
+
+      <span>{{ item.estado }}</span>
+
+      <div
+        class="barra"
+        [style.width.%]="
+          totalTickets() === 0
+            ? 0
+            : (item.total / totalTickets()) * 100
+        "
+      >
+        {{ item.total }}
+      </div>
+
+    </div>
+
+  }
+
+</div>
+
+</div>

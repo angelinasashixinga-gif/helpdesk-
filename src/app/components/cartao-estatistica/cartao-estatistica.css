@@ -1,0 +1,33 @@
+.cartao-estatistica {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+
+  background: white;
+  border-radius: 10px;
+
+  border-left: 5px solid;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.icone {
+  font-size: 28px;
+}
+
+.informacao {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  color: #666;
+  font-size: 14px;
+}
+
+.valor {
+  font-size: 28px;
+  color: #222;
+}
