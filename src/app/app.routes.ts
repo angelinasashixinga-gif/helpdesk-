@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { ListaTickets } from './pages/lista-tickets/lista-tickets';
 import { TicketCard } from './components/ticket-card/ticket-card';
 import { Dashboard } from './pages/dashboard/dashboard';
-import { NovoTicket } from './pages/novo-ticket/novo-ticket';
+import { NovoTicketComponent } from './pages/novo-ticket/novo-ticket';
 import { DetalheTicketComponent } from './pages/detalhe-ticket/detalhe-ticket';
 import { NaoEncontrado } from './pages/nao-encontrado/nao-encontrado';
 
@@ -29,7 +29,7 @@ export const routes: Routes = [
 
   {
     path: 'tickets/novo',
-    component: NovoTicket,
+    component: NovoTicketComponent,
     title: 'Novo Ticket'
   },
 

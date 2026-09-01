@@ -13,6 +13,11 @@
     #{{ ticket().id }}
   </span>
 
+  <p>
+  <strong>Criado em:</strong>
+  {{ ticket().dataCriacao | date:'dd/MM/yyyy HH:mm' }}
+</p>
+
  <h3>
   <a class="titulo-ticket"
    [routerLink]="['/tickets', ticket().id]">
@@ -76,6 +81,10 @@
 
   <strong>Estado:</strong>
 
+   <span class="etiqueta">
+    {{ ticket().estado | estadoLegivel }}
+  </span>
+<!-- 
   @switch (ticket().estado) {
     
 
@@ -97,13 +106,13 @@
       </span>
     }
 
-    @default {
-      <span class="etiqueta">
+    @default {   <span class="etiqueta">
         ⚫ Fechado
       </span>
     }
 
-  }
+  } -->
+   
   <div class="barra">
         <div
         class="progresso"

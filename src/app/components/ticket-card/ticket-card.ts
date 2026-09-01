@@ -2,10 +2,12 @@ import { Component, input, output } from '@angular/core';
 import { Ticket, EstadoTicket } from '../../models/ticket.model';
 import { NgClass, NgStyle } from "@angular/common";
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { EstadoLegivelPipe } from '../../pipes/estado-legivel.pipe';
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [NgClass, NgStyle, RouterLink],
+  imports: [NgClass, NgStyle, RouterLink, DatePipe, EstadoLegivelPipe],
   templateUrl: './ticket-card.html',
   styleUrl: './ticket-card.css',
 })

@@ -2,6 +2,7 @@ import { Component, signal, computed, effect} from '@angular/core';
 import {Ticket, TICKETS_MOCK, EstadoTicket} from '../../models/ticket.model';
 import { TicketCard } from '../../components/ticket-card/ticket-card';
 
+
 @Component({
   selector: 'app-lista-tickets',
   imports: [TicketCard],
