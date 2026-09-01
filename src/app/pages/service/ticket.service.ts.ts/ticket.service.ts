@@ -7,6 +7,7 @@ import { Ticket, EstadoTicket, TECNICOS_MOCK } from '../../../models/ticket.mode
 export class TicketService {
 
   private tickets = signal<Ticket[]>([
+  
   ]);
 
   readonly ticketsReadonly = this.tickets.asReadonly();
@@ -39,7 +40,7 @@ export class TicketService {
     return this.tickets();
   }
 
-  obterPorId(id: number): Ticket | undefined {
+  obterPorId(id: number) {
     return this.tickets().find(ticket => ticket.id === id);
   }
 

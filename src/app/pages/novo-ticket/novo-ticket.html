@@ -1,1 +1,89 @@
-<p>novo-ticket works!</p>
+<h1>Novo Ticket</h1>
+
+<label for="titulo">Título</label>
+
+<input
+  id="titulo"
+  type="text"
+  [(ngModel)]="titulo"
+  name="titulo"
+/>
+
+
+<label for="descricao">Descrição</label>
+
+<textarea
+  id="descricao"
+  [(ngModel)]="descricao"
+  name="descricao">
+</textarea>
+
+
+<label for="prioridade">Prioridade</label>
+
+<select
+  id="prioridade"
+  [(ngModel)]="prioridade"
+  name="prioridade">
+
+  @for (p of prioridades; track p) {
+    <option [value]="p">
+      {{ p }}
+    </option>
+  }
+
+</select>
+
+
+<label for="categoria">Categoria</label>
+
+<select
+  id="categoria"
+  [(ngModel)]="categoria"
+  name="categoria">
+
+  @for (c of categorias; track c) {
+    <option [value]="c">
+      {{ c }}
+    </option>
+  }
+
+</select>
+
+
+<label for="tecnico">Técnico</label>
+
+<select
+  id="tecnico"
+  [(ngModel)]="tecnico"
+  name="tecnico">
+
+  <option [ngValue]="null">
+    Sem técnico
+  </option>
+
+  @for (tec of tecnicos; track tec.id) {
+    <option [value]="tec.nome">
+      {{ tec.nome }}
+    </option>
+  }
+  @if (titulo().length > 0 && titulo().length < 5) {
+  <small class="erro">
+    O título tem de ter pelo menos 5 caracteres.
+  </small>
+}
+
+@if (descricao().length > 0 && descricao().length < 10) {
+  <small class="erro">
+    A descrição tem de ter pelo menos 10 caracteres.
+  </small>
+}
+<button
+  [disabled]="!formularioValido()"
+  (click)="guardar()">
+
+  Guardar ticket
+
+</button>
+
+</select>
