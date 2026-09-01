@@ -1,10 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { Ticket, EstadoTicket } from '../../models/ticket.model';
 import { NgClass, NgStyle } from "@angular/common";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [NgClass, NgStyle],
+  imports: [NgClass, NgStyle, RouterLink],
   templateUrl: './ticket-card.html',
   styleUrl: './ticket-card.css',
 })

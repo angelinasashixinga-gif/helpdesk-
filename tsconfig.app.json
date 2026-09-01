@@ -7,7 +7,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/service/ticket.service.ts", "src/app/service/ticket.service.ts/ticket.service.ts.spec.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

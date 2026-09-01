@@ -6,6 +6,15 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     background: white;
 }
+.titulo-ticket {
+  color: #2563eb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.titulo-ticket:hover {
+  text-decoration: underline;
+}
 .ticket-card {
     margin-bottom: 15px;
 }

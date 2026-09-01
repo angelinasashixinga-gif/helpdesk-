@@ -3,7 +3,7 @@ import { ListaTickets } from './pages/lista-tickets/lista-tickets';
 import { TicketCard } from './components/ticket-card/ticket-card';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { NovoTicket } from './pages/novo-ticket/novo-ticket';
-import { DetalheTicket } from './pages/detalhe-ticket/detalhe-ticket';
+import { DetalheTicketComponent } from './pages/detalhe-ticket/detalhe-ticket';
 import { NaoEncontrado } from './pages/nao-encontrado/nao-encontrado';
 
 export const routes: Routes = [
@@ -35,7 +35,7 @@ export const routes: Routes = [
 
   {
     path: 'tickets/:id',
-    component: DetalheTicket,
+    component: DetalheTicketComponent,
     title: 'Detalhe do Ticket'
   },
 

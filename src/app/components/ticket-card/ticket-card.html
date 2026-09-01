@@ -13,9 +13,12 @@
     #{{ ticket().id }}
   </span>
 
-  <h3>
+ <h3>
+  <a class="titulo-ticket"
+   [routerLink]="['/tickets', ticket().id]">
     {{ ticket().titulo }}
-  </h3>
+  </a>
+</h3>
 
   @if (mostrarDetalhes()) {
   <p>

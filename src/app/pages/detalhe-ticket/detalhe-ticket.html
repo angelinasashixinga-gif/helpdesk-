@@ -1,1 +1,64 @@
-<p>detalhe-ticket works!</p>
+@if (ticket) {
+
+  <div class="detalhe-ticket">
+
+    <h1>{{ ticket.titulo }}</h1>
+
+    <p>
+      <strong>ID:</strong>
+      {{ ticket.id }}
+    </p>
+
+    <p>
+      <strong>Descrição:</strong>
+      {{ ticket.descricao }}
+    </p>
+
+    <p>
+      <strong>Prioridade:</strong>
+      {{ ticket.prioridade }}
+    </p>
+
+    <p>
+      <strong>Estado:</strong>
+      {{ ticket.estado }}
+    </p>
+
+    <p>
+      <strong>Categoria:</strong>
+      {{ ticket.categoria }}
+    </p>
+
+    <p>
+      <strong>Técnico:</strong>
+      {{ ticket.tecnico || 'Não atribuído' }}
+    </p>
+
+    <p>
+      <strong>Data de criação:</strong>
+      {{ ticket.dataCriacao }}
+    </p>
+
+    <button (click)="voltar()">
+      Voltar para Tickets
+    </button>
+
+  </div>
+
+} @else {
+
+  <div class="erro">
+
+    <h2>Ticket não encontrado</h2>
+
+    <p>
+      O ticket solicitado não existe.
+    </p>
+
+    <button (click)="voltar()">
+      Voltar para a lista
+    </button>
+
+  </div>
+
+}
