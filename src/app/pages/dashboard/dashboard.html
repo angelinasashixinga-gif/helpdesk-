@@ -61,3 +61,28 @@
 </div>
 
 </div>
+<h2>Tickets mais antigos por resolver</h2>
+
+<div class="lista-antigos">
+
+  @for (ticket of maisAntigosPorResolver(); track ticket.id) {
+
+    <div class="ticket-antigo">
+
+      <strong>
+        #{{ ticket.id }} — {{ ticket.titulo }}
+      </strong>
+
+      <span>
+        {{ ticket.estado }}
+      </span>
+
+    </div>
+
+  } @empty {
+
+    <p>Não existem tickets pendentes.</p>
+
+  }
+
+</div>

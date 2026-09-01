@@ -30,3 +30,16 @@
   border-radius: 5px;
   text-align: center;
 }
+.lista-antigos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticket-antigo {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+}
