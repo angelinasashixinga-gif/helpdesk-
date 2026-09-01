@@ -1,0 +1,24 @@
+.barra-navegacao {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 25px;
+  background-color: #1f2937;
+}
+
+.barra-navegacao a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.barra-navegacao a:hover {
+  background-color: #374151;
+}
+
+.barra-navegacao a.ativo {
+  background-color: #2563eb;
+  font-weight: bold;
+}

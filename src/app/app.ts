@@ -15,10 +15,11 @@ a aplicação.
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ListaTickets } from './pages/lista-tickets/lista-tickets';
+import { BarraNavegacao } from "./components/barra-navegacao/barra-navegacao";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListaTickets],
+  imports: [RouterOutlet, ListaTickets, BarraNavegacao],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
