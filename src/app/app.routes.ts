@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
+
 import { ListaTickets } from './pages/lista-tickets/lista-tickets';
-import { TicketCard } from './components/ticket-card/ticket-card';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { NovoTicketComponent } from './pages/novo-ticket/novo-ticket';
 import { DetalheTicketComponent } from './pages/detalhe-ticket/detalhe-ticket';
@@ -8,23 +8,22 @@ import { NaoEncontrado } from './pages/nao-encontrado/nao-encontrado';
 
 export const routes: Routes = [
 
-  // {
-  //   path: 'tickets',
-  //   component: ListaTickets
-  // }
-   {
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
 
-
+  {
+    path: 'dashboard',
+    component: Dashboard,
+    title: 'Dashboard'
+  },
 
   {
     path: 'tickets',
-    component: TicketCard,
+    component: ListaTickets,
     title: 'Tickets'
-    
   },
 
   {
@@ -43,10 +42,6 @@ export const routes: Routes = [
     path: '**',
     component: NaoEncontrado,
     title: 'Página não encontrada'
-  },
-  {
-    path: '**',
-    component: Dashboard,
-  },
+  }
 
 ];

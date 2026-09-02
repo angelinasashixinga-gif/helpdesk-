@@ -1,33 +1,58 @@
-.cartao-estatistica {
+.cartao {
   display: flex;
   align-items: center;
-  gap: 15px;
-
-  padding: 20px;
+  gap: 20px;
 
   background: white;
-  border-radius: 10px;
+
+  padding: 24px;
+
+  border-radius: 12px;
 
   border-left: 5px solid;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: 0.2s;
+}
+
+.cartao:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .icone {
-  font-size: 28px;
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 25px;
 }
 
 .informacao {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
 .titulo {
-  color: #666;
-  font-size: 14px;
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  font-weight: 600;
 }
 
-.valor {
-  font-size: 28px;
-  color: #222;
+.informacao h2 {
+  margin: 6px 0 0;
+
+  font-size: 30px;
+
+  color: #1e293b;
 }

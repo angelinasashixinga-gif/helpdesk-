@@ -64,7 +64,7 @@ export const TICKETS_MOCK: Ticket[] = [
         descricao: 'O utilizador não consegue iniciar sessão no sistema.',
         prioridade: 'critica',
         estado: 'aberto',
-        tecnico: 'null', 
+        tecnico: null, 
         categoria: 'acesso',
         dataCriacao: new Date('2026-03-04t08:20:00')
     },

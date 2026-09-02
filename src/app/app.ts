@@ -20,11 +20,11 @@ import { EstadoLegivelPipe } from './pipes/estado-legivel-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListaTickets, BarraNavegacao],
+  imports: [RouterOutlet, BarraNavegacao],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('helpdesk-app');
+
   
 }

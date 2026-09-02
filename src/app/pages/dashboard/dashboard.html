@@ -1,131 +1,76 @@
-<div class="dashboard">
+<div class="cards-estatisticas">
 
-  <h1>Dashboard</h1>
-
-  <div class="cartoes">
-
+  <a  [routerLink]="['/tickets']"
+  [queryParams]="{ filtro: 'total' }">
+>
     <app-cartao-estatistica
-      titulo="Total de tickets"
+      titulo="Total de Tickets"
       [valor]="totalTickets()"
-      cor="#3498db"
       icone="🎫"
-    />
+      cor="#3498db">
+    </app-cartao-estatistica>
+  </a>
+
+  <a [routerLink]="['/tickets']"
+  [queryParams]="{ filtro: 'aberto' }">
 
     <app-cartao-estatistica
-      titulo="Tickets abertos"
+      titulo="Tickets Abertos"
       [valor]="totalAbertos()"
-      cor="#f39c12"
-      icone="📂"
-    />
+      icone="🔵"
+      cor="#2980b9">
+    </app-cartao-estatistica>
+  </a>
 
+  <a   [routerLink]="['/tickets']"
+  [queryParams]="{ filtro: 'critica' }">
     <app-cartao-estatistica
-      titulo="Tickets críticos"
+      titulo="Tickets Críticos"
       [valor]="totalCriticos()"
-      cor="#c0392b"
-      icone="⚠️"
-    />
+      icone="🔴"
+      cor="#e74c3c">
+    </app-cartao-estatistica>
+  </a>
 
+  <a    [routerLink]="['/tickets']"
+  [queryParams]="{ filtro: 'em-progresso' }">
     <app-cartao-estatistica
-      titulo="Tickets resolvidos"
-      [valor]="percentagemResolvidos()"
-      cor="#27ae60"
+      titulo="Tickets Em progresso"
+      [valor]="totalProgresso()"
+      icone="🟡"
+      cor="#e74c3c">
+    </app-cartao-estatistica>
+  </a>
+
+  <a routerLink="/tickets" class="card-link">
+    <app-cartao-estatistica
+      titulo="Tickets Resolvidos"
+      [valor]="totalResolvidos()"
       icone="✅"
-    />
+      cor="#27ae60">
+    </app-cartao-estatistica>
+  </a>
+  <div class="resolucao">
 
-  </div>
-  <h2>Tickets por estado</h2>
-
-<div class="grafico">
-
-  @for (item of ticketsPorEstado(); track item.estado) {
-
-    <div class="linha-grafico">
-
-      <span>{{ item.estado }}</span>
-
-      <div
-        class="barra"
-        [style.width.%]="
-          totalTickets() === 0
-            ? 0
-            : (item.total / totalTickets()) * 100
-        "
-      >
-        {{ item.total }}
+    <div class="resolucao-header">
+      <div>
+        <h2>Taxa de resolução</h2>
+        <p>Percentagem de tickets resolvidos</p>
       </div>
-
-    </div>
-
-  }
-
-</div>
-
-</div>
-<h2>Tickets mais antigos por resolver</h2>
-
-<div class="lista-antigos">
-
-  @for (ticket of maisAntigosPorResolver(); track ticket.id) {
-
-    <div class="ticket-antigo">
 
       <strong>
-        #{{ ticket.id }} — {{ ticket.titulo }}
+        {{ percentagemResolvidos() }}%
       </strong>
-
-      <span>
-        {{ ticket.estado }}
-      </span>
-
     </div>
 
-  } @empty {
-
-    <p>Não existem tickets pendentes.</p>
-
-  }
-
-</div>
-<h2>Tickets por técnico</h2>
-
-<div class="tecnicos">
-
-  @for (item of ticketsPorTecnico(); track item.nome) {
-
-    <div class="linha-grafico">
-
-      <span>{{ item.nome }}</span>
-
+    <div class="barra">
       <div
-        class="barra"
-        [style.width.%]="
-          totalTickets() === 0
-            ? 0
-            : (item.total / totalTickets()) * 100
-        "
-      >
-        {{ item.total }}
+        class="barra-progresso"
+        [style.width.%]="percentagemResolvidos()">
       </div>
-
     </div>
 
-  } @empty {
+  </div>
 
-    <p>Nenhum ticket registado.</p>
-
-  }
 
 </div>
-@if (totalCriticos() > 0) {
-
-  <p>
-    ⚠️ Existem {{ totalCriticos() }} tickets críticos por resolver.
-  </p>
-
-} @else {
-
-  <p>
-    ✅ Excelente! Não existem tickets críticos por resolver.
-  </p>
-
-}

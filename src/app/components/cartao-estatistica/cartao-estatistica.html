@@ -1,20 +1,25 @@
 <div
-  class="cartao-estatistica"
-  [style.border-left-color]="cor()"
->
+  class="cartao"
+  [style.border-left-color]="cor()">
 
-  <div class="icone" [style.color]="cor()">
+  <div
+    class="icone"
+    [style.background-color]="cor()">
+
     {{ icone() }}
+
   </div>
 
   <div class="informacao">
-    <span class="titulo">
-      {{ titulo() }}
-    </span>
 
-    <strong class="valor">
+    <p class="titulo">
+      {{ titulo() }}
+    </p>
+
+    <h2>
       {{ valor() }}
-    </strong>
+    </h2>
+
   </div>
 
 </div>

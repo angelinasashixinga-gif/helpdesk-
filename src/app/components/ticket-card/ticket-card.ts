@@ -1,51 +1,68 @@
-import { Component, input, output } from '@angular/core';
-import { Ticket, EstadoTicket } from '../../models/ticket.model';
-import { NgClass, NgStyle } from "@angular/common";
+import { Component, input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
+
+import {
+  Ticket,
+  EstadoTicket
+} from '../../models/ticket.model';
+
 import { EstadoLegivelPipe } from '../../pipes/estado-legivel-pipe';
+import { TicketService } from '../../pages/service/ticket.service.ts.ts/ticket.service';
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [NgClass, NgStyle, RouterLink, DatePipe, EstadoLegivelPipe],
+  imports: [
+    CommonModule,
+    RouterLink,
+    EstadoLegivelPipe
+  ],
   templateUrl: './ticket-card.html',
-  styleUrl: './ticket-card.css',
+  styleUrl: './ticket-card.css'
 })
 export class TicketCard {
 
+  private servico = inject(TicketService);
+
   ticket = input.required<Ticket>();
 
-  mostrarDetalhes = input(false);
-
-  estadoAlterado = output<EstadoTicket>();
-
-  ticketRemovido = output<number>();
+  mostrarDetalhes = input(true);
 
   proximoEstado(): void {
 
-    const fluxo: EstadoTicket[] = [
-      'aberto',
-      'em-progresso',
-      'resolvido',
-      'fechado'
-    ];
+    const ticketAtual = this.ticket();
 
-    const atual = fluxo.indexOf(this.ticket().estado);
+    let novoEstado: EstadoTicket;
 
-    const seguinte =
-      fluxo[Math.min(atual + 1, fluxo.length - 1)];
+    switch (ticketAtual.estado) {
 
-    console.log('Novo estado:', seguinte);
+      case 'aberto':
+        novoEstado = 'em-progresso';
+        break;
 
-    this.estadoAlterado.emit(seguinte);
+      case 'em-progresso':
+        novoEstado = 'resolvido';
+        break;
+
+      case 'resolvido':
+        novoEstado = 'fechado';
+        break;
+
+      case 'fechado':
+        return;
+
+    }
+
+    this.servico.atualizarEstado(
+      ticketAtual.id,
+      novoEstado
+    );
   }
-
 
   remover(): void {
 
-    console.log('ELIMINAR CLICADO');
+    const ticketAtual = this.ticket();
 
-    this.ticketRemovido.emit(this.ticket().id);
+    this.servico.remover(ticketAtual.id);
   }
-
 }

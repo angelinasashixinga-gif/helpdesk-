@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Categoria,Prioridade,TECNICOS_MOCK} from '../../models/ticket.model';
-import { TicketService } from '../service/ticket.service/ticket.service';
+import { TicketService } from '../service/ticket.service.ts.ts/ticket.service';
 
 @Component({
   selector: 'app-novo-ticket',
@@ -42,21 +42,34 @@ export class NovoTicketComponent {
     'acesso'
   ];
 
-  tecnicos = TECNICOS_MOCK;
-  guardar(): void {
+
+guardar(): void {
 
   if (!this.formularioValido()) {
     return;
   }
 
-  // this.servico.criar({
-  //   titulo: this.titulo(),
-  //   descricao: this.descricao(),
-  //   prioridade: this.prioridade(),
-  //   categoria: this.categoria(),
-  //   estado: 'aberto',
-  //   tecnico: this.tecnico()
-  // });
+  const novoTicket = {
+    id: Date.now(),
+
+    titulo: this.titulo(),
+
+    descricao: this.descricao(),
+
+    prioridade: this.prioridade(),
+
+    categoria: this.categoria(),
+
+    estado: 'aberto' as const,
+
+    tecnico: this.tecnico(),
+
+    dataCriacao: new Date()
+  };
+
+  this.servico.criar(novoTicket);
+
+  console.log('Ticket criado:', novoTicket);
 
   this.router.navigate(['/tickets']);
 }

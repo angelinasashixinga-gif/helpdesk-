@@ -1,106 +1,25 @@
-<h2>Lista de Tickets</h2>
+<section class="tickets-container">
 
-<input type="text"
-placeholder="Pesquisar Ticket..."
-(input)="pesquisar($event)"
->
-<hr>
-<div class="filtros">
+  <h1>Tickets</h1>
 
-  <button
-  type="button"
-  [class.ativo]="filtroEstado() === 'todos'"
-  (click)="filtrar('todos')"
->
-  Todos ({{ totalTickets() }})
-</button>
+  @if (ticketsFiltrados().length === 0) {
 
-<button
-  type="button"
-  [class.ativo]="filtroEstado() === 'aberto'"
-  (click)="filtrar('aberto')"
->
-  Abertos ({{ contarPorEstado('aberto') }})
-</button>
+    <p>Nenhum ticket encontrado.</p>
 
-<button
-  type="button"
-  [class.ativo]="filtroEstado() === 'em-progresso'"
-  (click)="filtrar('em-progresso')"
->
-  Em processo ({{ contarPorEstado('em-progresso') }})
-</button>
+  } @else {
 
-<button
-  type="button"
-  [class.ativo]="filtroEstado() === 'resolvido'"
-  (click)="filtrar('resolvido')"
->
-  Resolvidos ({{ contarPorEstado('resolvido') }})
-</button>
+    <div class="tickets-grid">
 
-<button
-  type="button"
-  [class.ativo]="filtroEstado() === 'fechado'"
-  (click)="filtrar('fechado')"
->
-  Fechados ({{ contarPorEstado('fechado') }})
-</button>
-  <hr>
+      @for (ticket of ticketsFiltrados(); track ticket.id) {
 
-</div>
-<select
-  (change)="filtrarPrioridade($event)"
->
-  <option value="todas">Todas</option>
-  <option value="baixa">Baixa</option>
-  <option value="media">Média</option>
-  <option value="alta">Alta</option>
-  <option value="critica">Crítica</option>
-</select>
-  <button
-  type="button"
-  (click)="limparFiltros()">
-  Limpar filtros
-</button>
- <hr>
+        <app-ticket-card
+          [ticket]="ticket">
+        </app-ticket-card>
 
-<p>Total de Tickets: {{ totalTickets() }}</p>
+      }
 
-<button type="button" (click)="adicionarTicket()">
-  Adicionar Ticket
-</button>
+    </div>
 
-<button type="button" (click)="limparLista()">
-  Limpar Lista
-</button>
+  }
 
-<hr>
-
-@for (ticket of ticketsFiltrados();
- track ticket.id; 
-  let i = $index;
-  let par = $even;
-  let impar = $odd
-) {
- <div
-    class="linha-ticket"
-    [class.par]="par"
-    [class.impar]="impar"
-  >
-
-    <app-ticket-card
-      [ticket]="ticket"
-      [mostrarDetalhes]="true"
-      (estadoAlterado)="alterarEstado(ticket.id, $event)"
-      (ticketRemovido)="removerTicket($event)"
-    />
- </div>
-}
-@empty {
-
-  <p class="sem-tickets">
-    Não existem tickets registados.
-  </p>
-
-}
+</section>
