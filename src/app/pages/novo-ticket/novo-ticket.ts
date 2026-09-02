@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Categoria,Prioridade,TECNICOS_MOCK} from '../../models/ticket.model';
-import { TicketService } from '../../service/ticket.service';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-novo-ticket',

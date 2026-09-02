@@ -16,6 +16,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ListaTickets } from './pages/lista-tickets/lista-tickets';
 import { BarraNavegacao } from "./components/barra-navegacao/barra-navegacao";
+import { EstadoLegivelPipe } from './pipes/estado-legivel-pipe';
 
 @Component({
   selector: 'app-root',

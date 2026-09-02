@@ -86,3 +86,46 @@
   }
 
 </div>
+<h2>Tickets por técnico</h2>
+
+<div class="tecnicos">
+
+  @for (item of ticketsPorTecnico(); track item.nome) {
+
+    <div class="linha-grafico">
+
+      <span>{{ item.nome }}</span>
+
+      <div
+        class="barra"
+        [style.width.%]="
+          totalTickets() === 0
+            ? 0
+            : (item.total / totalTickets()) * 100
+        "
+      >
+        {{ item.total }}
+      </div>
+
+    </div>
+
+  } @empty {
+
+    <p>Nenhum ticket registado.</p>
+
+  }
+
+</div>
+@if (totalCriticos() > 0) {
+
+  <p>
+    ⚠️ Existem {{ totalCriticos() }} tickets críticos por resolver.
+  </p>
+
+} @else {
+
+  <p>
+    ✅ Excelente! Não existem tickets críticos por resolver.
+  </p>
+
+}

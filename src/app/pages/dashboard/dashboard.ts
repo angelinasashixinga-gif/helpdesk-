@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { TicketService } from '../../services/ticket.service';
+import { TicketService } from '../../pages/service/ticket.service';
 import { CartaoEstatistica } from '../../components/cartao-estatistica/cartao-estatistica';
 
 @Component({
@@ -37,7 +37,7 @@ export class Dashboard {
   ticketsPorEstado = computed(() => {
   const estados = [
     'aberto',
-    'em-processo',
+    'em-progresso',
     'resolvido',
     'fechado'
   ];
@@ -50,12 +50,31 @@ export class Dashboard {
 maisAntigosPorResolver = computed(() =>
   [...this.tickets()]
     .filter(
-      t => t.estado === 'aberto' || t.estado === 'em-processo'
+      t => t.estado === 'aberto' || t.estado === 'em-progresso'
     )
     .sort(
       (a, b) =>
         a.dataCriacao.getTime() - b.dataCriacao.getTime()
     )
     .slice(0, 3)
-);
+); 
+ticketsPorTecnico = computed(() => {
+
+  const mapa = new Map<string, number>();
+
+  for (const ticket of this.tickets()) {
+
+    const nome = ticket.tecnico ?? 'Por atribuir';
+
+    mapa.set(
+      nome,
+      (mapa.get(nome) ?? 0) + 1
+    );
+  }
+
+  return [...mapa.entries()].map(([nome, total]) => ({
+    nome,
+    total
+  }));
+});
 }

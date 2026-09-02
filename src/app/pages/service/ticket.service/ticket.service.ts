@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { Ticket, EstadoTicket, TECNICOS_MOCK } from '../../../models/ticket.model';
+import { Ticket, EstadoTicket } from '../../../models/ticket.model';
 
 @Injectable({
   providedIn: 'root'

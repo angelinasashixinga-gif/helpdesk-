@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { EstadoTicket } from '../models/ticket.model';
 
 @Pipe({
   name: 'estadoLegivel',
@@ -7,22 +6,15 @@ import { EstadoTicket } from '../models/ticket.model';
 })
 export class EstadoLegivelPipe implements PipeTransform {
 
-  transform(estado: EstadoTicket): string {
-    switch (estado) {
-      case 'aberto':
-        return 'Aberto';
+  transform(valor: string): string {
 
-      case 'em-progresso':
-        return 'Em processo';
+    const mapa: Record<string, string> = {
+      'aberto': 'Aberto',
+      'em-processo': 'Em Processo',
+      'resolvido': 'Resolvido',
+      'fechado': 'Fechado'
+    };
 
-      case 'resolvido':
-        return 'Resolvido';
-
-      case 'fechado':
-        return 'Fechado';
-
-      default:
-        return estado;
-    }
+    return mapa[valor] ?? valor;
   }
 }
