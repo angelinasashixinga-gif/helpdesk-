@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TicketService } from '../../services/ticket.service';
+import { TicketService } from '../service/ticket.service/ticket.service';
 
 @Component({
   selector: 'app-detalhe-ticket',

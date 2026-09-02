@@ -3,7 +3,7 @@ import { Ticket, EstadoTicket } from '../../models/ticket.model';
 import { NgClass, NgStyle } from "@angular/common";
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { EstadoLegivelPipe } from '../../pipes/estado-legivel.pipe';
+import { EstadoLegivelPipe } from '../../pipes/estado-legivel-pipe';
 
 @Component({
   selector: 'app-ticket-card',

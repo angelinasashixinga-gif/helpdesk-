@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Categoria,Prioridade,TECNICOS_MOCK} from '../../models/ticket.model';
-import { TicketService } from '../../services/ticket.service';
+import { TicketService } from '../service/ticket.service/ticket.service';
 
 @Component({
   selector: 'app-novo-ticket',
@@ -49,14 +49,14 @@ export class NovoTicketComponent {
     return;
   }
 
-  this.servico.criar({
-    titulo: this.titulo(),
-    descricao: this.descricao(),
-    prioridade: this.prioridade(),
-    categoria: this.categoria(),
-    estado: 'aberto',
-    tecnico: this.tecnico()
-  });
+  // this.servico.criar({
+  //   titulo: this.titulo(),
+  //   descricao: this.descricao(),
+  //   prioridade: this.prioridade(),
+  //   categoria: this.categoria(),
+  //   estado: 'aberto',
+  //   tecnico: this.tecnico()
+  // });
 
   this.router.navigate(['/tickets']);
 }

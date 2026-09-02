@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { TicketService } from '../../pages/service/ticket.service';
+import { TicketService } from '../service/ticket.service/ticket.service';
 import { CartaoEstatistica } from '../../components/cartao-estatistica/cartao-estatistica';
 
 @Component({
