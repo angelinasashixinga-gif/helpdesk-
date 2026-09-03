@@ -23,6 +23,8 @@ export class Dashboard {
 
   totalResolvidos = this.servico.ticketsResolvidos;
 
+  totalFechados = this.servico.ticketsFechados
+
   percentagemResolvidos = computed(() => {
 
     const total = this.totalTickets();

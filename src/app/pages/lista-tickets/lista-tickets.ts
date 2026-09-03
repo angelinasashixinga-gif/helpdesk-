@@ -48,6 +48,11 @@ export class ListaTickets {
       case 'total':
       default:
         return todosTickets;
+        
+        case 'fechado':
+  return todosTickets.filter(
+    ticket => ticket.estado === 'fechado'
+  );
     }
   });
 }

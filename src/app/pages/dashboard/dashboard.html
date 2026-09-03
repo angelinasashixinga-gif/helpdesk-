@@ -41,6 +41,17 @@
       cor="#e74c3c">
     </app-cartao-estatistica>
   </a>
+  <a
+  [routerLink]="['/tickets']"
+  [queryParams]="{ filtro: 'fechado' }"
+>
+  <app-cartao-estatistica
+    titulo="Tickets Fechados"
+    [valor]="totalFechados()"
+    icone="🔒"
+    cor="#7f8c8d">
+  </app-cartao-estatistica>
+</a>
 
   <a routerLink="/tickets" class="card-link">
     <app-cartao-estatistica
