@@ -19,7 +19,7 @@ export class Dashboard {
 
   totalCriticos = this.servico.totalCriticos;
 
-  totalProgresso = this.servico.totalCriticos;
+  totalProgresso = this.servico.ticketsProgresso;
 
   totalResolvidos = this.servico.ticketsResolvidos;
 

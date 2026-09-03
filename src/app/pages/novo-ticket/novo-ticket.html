@@ -1,79 +1,138 @@
-<section class="novo-ticket">
+<div class="pagina-novo-ticket">
 
-  <h1>Novo Ticket</h1>
-
-  <p>
-    Registe um novo pedido de suporte.
-  </p>
-
-  <form (submit)="guardar(); $event.preventDefault()">
+  <div class="cabecalho">
 
     <div>
-      <label for="titulo">
-        Título
-      </label>
-
-      <input
-        id="titulo"
-        type="text"
-        placeholder="Título do ticket"
-        [value]="titulo()"
-        (input)="titulo.set($any($event.target).value)"
-      >
+      <h1>Novo Ticket</h1>
+      <p>Registe um novo pedido de suporte.</p>
     </div>
 
-    <div>
-      <label for="descricao">
-        Descrição
-      </label>
+  </div>
 
-      <textarea
-        id="descricao"
-        placeholder="Descreva o problema"
-        [value]="descricao()"
-        (input)="descricao.set($any($event.target).value)"
-      ></textarea>
-    </div>
 
-    <div>
-      <label for="prioridade">
-        Prioridade
-      </label>
+  <div class="formulario-container">
 
-      <select
-        id="prioridade"
-        [value]="prioridade()"
-        (change)="prioridade.set($any($event.target).value)"
-      >
-        <option value="baixa">Baixa</option>
-        <option value="media">Média</option>
-        <option value="alta">Alta</option>
-        <option value="critica">Crítica</option>
-      </select>
-    </div>
+    <form (ngSubmit)="criarTicket()">
 
-    <div>
-      <label for="categoria">
-        Categoria
-      </label>
+      <div class="campo">
+        <label for="titulo">
+          Título do ticket
+        </label>
 
-      <select
-        id="categoria"
-        [value]="categoria()"
-        (change)="categoria.set($any($event.target).value)"
-      >
-        @for (cat of categorias; track cat) {
-          <option [value]="cat">
-            {{ cat }}
-          </option>
-        }
-      </select>
-    </div>
+        <input
+          id="titulo"
+          type="text"
+          name="titulo"
+          [(ngModel)]="titulo"
+          placeholder="Ex.: Computador não liga"
+          required
+        />
+      </div>
 
-    <button type="button"(click)="guardar()">
-      Criar Ticket
-    </button>
 
-  </form>
+      <div class="campo">
+        <label for="descricao">
+          Descrição
+        </label>
 
-</section>
+        <textarea
+          id="descricao"
+          name="descricao"
+          [(ngModel)]="descricao"
+          placeholder="Descreva detalhadamente o problema..."
+          rows="5"
+          required
+        ></textarea>
+      </div>
+
+
+      <div class="linha-campos">
+
+        <div class="campo">
+          <label for="prioridade">
+            Prioridade
+          </label>
+
+          <select
+            id="prioridade"
+            name="prioridade"
+            [(ngModel)]="prioridade">
+
+            <option value="baixa">
+              Baixa
+            </option>
+
+            <option value="media">
+              Média
+            </option>
+
+            <option value="alta">
+              Alta
+            </option>
+
+            <option value="critica">
+              Crítica
+            </option>
+
+          </select>
+        </div>
+
+
+        <div class="campo">
+          <label for="categoria">
+            Categoria
+          </label>
+
+          <select
+            id="categoria"
+            name="categoria"
+            [(ngModel)]="categoria">
+
+            <option value="hardware">
+              Hardware
+            </option>
+
+            <option value="software">
+              Software
+            </option>
+
+            <option value="rede">
+              Rede
+            </option>
+
+            <option value="acesso">
+              Acesso
+            </option>
+
+          </select>
+        </div>
+
+      </div>
+
+
+      <div class="acoes">
+
+        <button
+          type="button"
+          class="btn-cancelar"
+          (click)="cancelar()">
+
+          Cancelar
+
+        </button>
+
+        <button
+          type="submit"
+          class="btn-criar">
+
+          + Criar Ticket
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
